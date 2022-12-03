@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:alma_mater/style/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-// https://www.youtube.com/watch?v=Mfa3u3naQew&ab_channel=MitchKoko 5:07
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -44,36 +44,33 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: PRIMARY_COLOR,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.monitor_heart,
-                  size: 100,
+                SvgPicture.asset(
+                  'assets/mother_art_2.svg',
+                  width: 200,
+                  height: 200,
                 ),
                 // Hello again!
                 Text(
-                  'Hello there!',
+                  'Добро пожаловать!',
                   style: GoogleFonts.bebasNeue(
-                    fontSize: 52,
+                    fontSize: 37,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 10),
-                Text(
-                  'Register below',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(height: 50),
                 // email
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: Colors.white,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -83,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Email',
+                          hintText: 'Электронный адрес',
                         ),
                       ),
                     ),
@@ -97,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: Colors.white,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -108,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Пароль',
                         ),
                       ),
                     ),
@@ -120,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: Colors.white,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -131,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Confirm password',
+                          hintText: 'Подтвердить пароль',
                         ),
                       ),
                     ),
@@ -153,7 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       child: Center(
                         child: Text(
-                          'Sign In',
+                          'Зарегистрироваться',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -169,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already have an account?',
+                      'Уже есть аккаунт?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -177,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     GestureDetector(
                       onTap: widget.showLoginPage,
                       child: Text(
-                        ' Login now',
+                        ' Войти в аккаунт',
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,

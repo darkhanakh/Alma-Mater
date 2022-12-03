@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:alma_mater/auth/forgor_password_page.dart';
+import 'package:alma_mater/style/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -34,36 +37,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: PRIMARY_COLOR,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.monitor_heart,
-                  size: 100,
+                SvgPicture.asset(
+                  'assets/mother_art.svg',
+                  width: 200,
+                  height: 200,
                 ),
+
                 // Hello again!
                 Text(
-                  'Hello again!',
+                  'С возвращением!',
                   style: GoogleFonts.bebasNeue(
-                    fontSize: 52,
+                    fontSize: 37,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 10),
-                Text(
-                  'Welcome back, you\'ve been missed!',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(height: 50),
                 // email
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: Colors.white,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Email',
+                          hintText: 'Электронная почта',
                         ),
                       ),
                     ),
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: Colors.white,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -98,12 +99,39 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Пароль',
                         ),
                       ),
                     ),
                   ),
                 ),
+
+                SizedBox(height: 10),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ForgotPasswordPage();
+                          }));
+                        },
+                        child: Text(
+                          'Забыли пароль?',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
                 SizedBox(height: 10),
                 // sign in button
                 Padding(
@@ -118,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Center(
                         child: Text(
-                          'Sign In',
+                          'Войти',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -134,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Not registered?',
+                      'Нет аккаунта?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -142,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: widget.showRegisterPage,
                       child: Text(
-                        ' Register now',
+                        ' Зарегистрироваться',
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
