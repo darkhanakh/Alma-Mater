@@ -14,13 +14,13 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Зарегистрирован как:' + user.email!),
+              Text('Зарегистрирован как:${user.email!}'),
               MaterialButton(
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
                 },
                 color: Colors.deepPurple[200],
-                child: Text('Выйти'),
+                child: const Text('Выйти'),
               )
             ],
           ),

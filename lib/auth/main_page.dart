@@ -1,4 +1,3 @@
-import 'package:alma_mater/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,7 @@ class MainPage extends StatelessWidget {
           if (snapshot.hasData) {
             return HomePage();
           } else {
-            return AuthPage();
+            return const AuthPage();
           }
         },
       ),
