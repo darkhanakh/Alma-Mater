@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
-import 'package:alma_mater/style/theme.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,7 +30,7 @@ class _HeroPageState extends State<HeroPage> {
     return SingleChildScrollView(
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             children: [
               ClipRRect(
@@ -117,53 +116,51 @@ class _HeroPageState extends State<HeroPage> {
                 height: 250,
               ),
               SizedBox(height: 30),
-              Container(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Полезные статьи',
-                          style: GoogleFonts.roboto(
-                            color: Colors.black,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Полезные статьи',
+                        style: GoogleFonts.roboto(
+                          color: Colors.black,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  CarouselSlider(
+                    options: CarouselOptions(height: 250.0),
+                    items: carouselItems.map((object) {
+                      return Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(color: object['color']),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                object['title'],
+                                style: TextStyle(
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {},
+                                  child: Text('Узнать подробнее'))
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    CarouselSlider(
-                      options: CarouselOptions(height: 250.0),
-                      items: carouselItems.map((object) {
-                        return Container(
-                          width: double.infinity,
-                          margin: EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: BoxDecoration(color: object['color']),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                  object['title'],
-                                  style: TextStyle(
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text('Узнать подробнее'))
-                              ],
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    )
-                  ],
-                ),
+                      );
+                    }).toList(),
+                  )
+                ],
               )
             ],
           ),
