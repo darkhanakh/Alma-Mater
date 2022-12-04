@@ -17,12 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  final List<Widget> _pages = [
-    HeroPage(),
-    CalendarPage(),
-    MarketPage(),
-    ProfilePage()
-  ];
+  final List<Widget> _pages = [HeroPage(), MarketPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +40,6 @@ class _HomePageState extends State<HomePage> {
           tabs: [
             GButton(
               icon: Icons.home_rounded,
-            ),
-            GButton(
-              icon: Icons.calendar_month,
             ),
             GButton(
               icon: Icons.favorite_border,
