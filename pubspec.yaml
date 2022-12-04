@@ -41,6 +41,10 @@ dependencies:
   google_nav_bar: ^5.0.6
   carousel_slider: ^4.1.1
   http: ^0.13.5
+  profile: ^0.0.1
+  animated_theme_switcher: ^2.0.7
+  flutter_screenutil: ^5.6.0
+  line_awesome_flutter: ^2.0.0
 
 dev_dependencies:
   flutter_test:
